@@ -1,0 +1,33 @@
+<%= flash[:success] %>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-3">
+      <%= render 'users/list', user: @user %>
+      <%= render 'books/list2', book: @book %>
+    </div>
+    <div class="col-md-8 offset-md-1">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <h2>Users</h2>
+            <th>Image</th>
+            <th>Name</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @users.each do |user| %>
+          <tr>
+            <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg" ,size:'40x40' %></td>
+            <td><%= user.name %></td>
+            <td><%=link_to user_path(user.id) do %>Show<% end %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
